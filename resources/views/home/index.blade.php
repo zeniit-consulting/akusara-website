@@ -1,12 +1,12 @@
-<x-guest-layout>
+<x-landing-layout>
+    <x-navbar />
+    <x-hero />
+    <x-stats />
+    <x-about />
+    <x-services />
+    <x-portfolio />
+    <x-company-profile />
+    <x-contact />
+    <x-footer />
 
-    <x-guest.navbar />
-    <x-guest.hero />
-    <x-guest.stats />
-    <x-guest.about />
-    <x-guest.services />
-    <x-guest.portfolio />
-    <x-guest.company-profile />
-    <x-guest.contact />
-    <x-guest.footer />
-</x-guest-layout>
+</x-landing-layout>
