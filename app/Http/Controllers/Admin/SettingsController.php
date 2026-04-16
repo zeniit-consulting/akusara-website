@@ -34,7 +34,13 @@ class SettingsController extends Controller
         $validated = $request->validate([
             'company_name' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
+            'phone' => [
+                'required',
+                'regex:/^62[0-9]{8,13}$/'
+            ],
+            [
+                'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.'
+            ],
             'address' => 'nullable|string|max:500',
             'logo' => 'nullable|image|max:2048',
             'hero_title' => 'nullable|string|max:255',
@@ -69,7 +75,7 @@ class SettingsController extends Controller
             $validated['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
-        
+
 
         Settings::create($validated);
 
@@ -105,7 +111,13 @@ class SettingsController extends Controller
         $validated = $request->validate([
             'company_name' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:20',
+            'phone' => [
+                'required',
+                'regex:/^62[0-9]{8,13}$/'
+            ],
+            [
+                'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.'
+            ],
             'address' => 'nullable|string|max:500',
             'logo' => 'nullable|image|max:2048',
             'hero_title' => 'nullable|string|max:255',
