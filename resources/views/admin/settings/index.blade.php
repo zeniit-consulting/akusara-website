@@ -34,110 +34,103 @@
         <!-- TABLE CARD -->
         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
 
-            <table class="w-full text-sm text-left text-gray-600">
 
-                <!-- HEADER -->
-                <thead class="bg-slate-900 text-xs uppercase tracking-wider text-white">
+            <table class="w-full text-sm">
+
+                <thead class="bg-slate-900 text-white text-xs uppercase">
                     <tr>
-                        <th class="px-6 py-4">No</th>
+                        <th class="px-6 py-4">#</th>
                         <th class="px-6 py-4">Company</th>
                         <th class="px-6 py-4">Contact</th>
-                        <th class="px-6 py-4">Address</th>
+                        <th class="px-6 py-4">Status</th>
                         <th class="px-6 py-4 text-right">Action</th>
                     </tr>
                 </thead>
 
-                <!-- BODY -->
-                <tbody class="divide-y divide-gray-100">
+                <tbody class="divide-y">
 
-                    @php $nomor = 1; @endphp
+                    @foreach ($settings as $i => $setting)
+                        <tr class="hover:bg-gray-50">
 
-                    @foreach ($settings as $setting)
-                        <tr class="hover:bg-gray-50 transition">
-
-
+                            <!-- NO -->
                             <td class="px-6 py-4 text-gray-400">
-                                {{ $nomor++ }}
+                                {{ $i + 1 }}
                             </td>
 
-
+                            <!-- COMPANY -->
                             <td class="px-6 py-4">
                                 <div class="flex items-center gap-3">
+
                                     @if ($setting->logo)
                                         <img src="{{ asset('storage/' . $setting->logo) }}"
-                                            class="w-10 h-10 rounded-lg object-cover border">
-                                    @else
-                                        <div
-                                            class="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-xs">
-                                            N/A
-                                        </div>
+                                            class="w-10 h-10 rounded-lg object-cover">
                                     @endif
 
                                     <div>
-                                        <div class="font-semibold text-gray-800">
-                                            {{ $setting->company_name }}
-                                        </div>
-                                        <div class="text-xs text-gray-400">
-                                            {{ $setting->phone }}
-                                        </div>
+                                        <p class="font-semibold">{{ $setting->company_name }}</p>
+                                        <p class="text-xs text-gray-400 truncate max-w-[200px]">
+                                            {{ $setting->address }}
+                                        </p>
                                     </div>
                                 </div>
                             </td>
 
+                            <!-- CONTACT -->
+                            <td class="px-6 py-4 text-sm">
+                                <p>{{ $setting->email }}</p>
+                                <p class="text-gray-400 text-xs">{{ $setting->phone }}</p>
+                            </td>
 
+                            <!-- STATUS -->
                             <td class="px-6 py-4">
-                                <span class="px-3 py-1 text-xs bg-gray-100 rounded-full text-gray-600">
-                                    {{ $setting->email }}
+                                <span
+                                    class="px-3 py-1 text-xs rounded-full 
+                                    {{ $setting->hero_title ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400' }}">
+                                    {{ $setting->hero_title ? 'Completed' : 'Incomplete' }}
                                 </span>
                             </td>
 
+                            <!-- ACTION -->
+                            <td class="px-6 py-4 flex justify-end gap-3">
 
-                            <td class="px-6 py-4 text-gray-500 max-w-xs truncate">
-                                {{ $setting->address }}
-                            </td>
+                                <a href="{{ route('admin.settings.show', $setting->id) }}"
+                                    class="inline-flex items-center px-4 py-2 bg-sky-500 transition ease-in-out delay-75 hover:bg-sky-600 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110 gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        class="size-5">
+                                        <path d="M10 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                                        <path fill-rule="evenodd"
+                                            d="M.664 10.59a1.651 1.651 0 0 1 0-1.186A10.004 10.004 0 0 1 10 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0 1 10 17c-4.257 0-7.893-2.66-9.336-6.41ZM14 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+                                            clip-rule="evenodd" />
+                                    </svg>
 
+                                    View
+                                </a>
 
-                            <td class="px-6 py-4">
-                                <div class="flex justify-end gap-3">
+                                <a href="{{ route('admin.settings.edit', $setting) }}"
+                                    class="inline-flex items-center px-4 py-2 bg-blue-600 transition ease-in-out delay-75 hover:bg-blue-700 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110 gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        class="size-5">
+                                        <path
+                                            d="m2.695 14.762-1.262 3.155a.5.5 0 0 0 .65.65l3.155-1.262a4 4 0 0 0 1.343-.886L17.5 5.501a2.121 2.121 0 0 0-3-3L3.58 13.419a4 4 0 0 0-.885 1.343Z" />
+                                    </svg>
 
-                                    <a href="{{ route('admin.settings.edit', $setting) }}"
-                                        class="inline-flex items-center px-4 py-2 bg-blue-600 transition-all duration-200 hover:bg-blue-700 text-white text-sm font-medium rounded-lg hover:-translate-y-0.5 hover:shadow-md">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke="currentColor" class="h-5 w-5 mr-2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16.862 4.487a2.25 2.25 0 113.182 3.182L7.5 20.213 3 21l.787-4.5L16.862 4.487z" />
+                                    Edit
+                                </a>
+                                <form id="delete-form-{{ $setting->id }}"
+                                    action="{{ route('admin.settings.destroy', $setting->id) }}" method="POST"> @csrf
+                                    @method('DELETE') <button type="button"
+                                        onclick="confirmDelete({{ $setting->id }})"
+                                        class="inline-flex items-center px-4 py-2 bg-red-600 transition ease-in-out delay-75 hover:bg-red-700 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            class="size-5">
+                                            <path fill-rule="evenodd"
+                                                d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 4.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5ZM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4ZM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5Zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5Z"
+                                                clip-rule="evenodd" />
                                         </svg>
 
-                                        Update
-                                    </a>
 
+                                        Delete </button> </form>
 
-
-                                    <form id="delete-form-{{ $setting->id }}"
-                                        action="{{ route('admin.settings.destroy', $setting->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-
-
-                                        <button type="button" onclick="confirmDelete({{ $setting->id }})"
-                                            class="inline-flex items-center px-4 py-2 bg-red-600 transition ease-in-out delay-75 hover:bg-red-700 text-white text-sm font-medium rounded-md hover:-translate-y-1 hover:scale-110">
-                                            <svg stroke="currentColor" viewBox="0 0 24 24" fill="none"
-                                                class="h-5 w-5 mr-2" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                                    stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
-                                                </path>
-                                            </svg>
-
-                                            Delete
-                                        </button>
-
-
-
-                                    </form>
-
-
-                                </div>
                             </td>
 
                         </tr>
