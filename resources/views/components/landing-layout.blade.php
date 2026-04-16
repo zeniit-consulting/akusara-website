@@ -45,6 +45,44 @@
             }
         });
     </script>
+
+    {{-- SweetAlert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer
+                toast.onmouseleave = Swal.resumeTimer
+            }
+        });
+    </script>
+
+    {{-- SUCCESS --}}
+    @if (session('success'))
+        <script>
+            Toast.fire({
+                icon: 'success',
+                title: @json(session('success')),
+                timer: 2500
+            });
+        </script>
+    @endif
+
+    {{-- ERROR --}}
+    @if (session('error'))
+        <script>
+            Toast.fire({
+                icon: 'error',
+                title: @json(session('error')),
+                timer: 3000
+            });
+        </script>
+    @endif
 </body>
 
 </html>
