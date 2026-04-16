@@ -3,12 +3,11 @@
         <!-- Header Section -->
         <div class="text-center mb-16">
             <h2 class="text-white text-5xl md:text-6xl font-bold mb-4" data-aos="fade-up" data-aos-duration="900">
-                About <span class="text-white">Look Creative</span>
+                {{ (ucwords($setting->company_profile_title ?? 'Company Profile')) }}
             </h2>
             <p class="text-slate-200 text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="900"
                 data-aos-delay="150">
-                Kami adalah mitra terpercaya dalam mewujudkan visi kreatif dan inovatif Anda melalui pengalaman yang tak
-                terlupakan.
+                {{(ucfirst($setting->company_profile_description ?? 'Discover our vision, mission, and core values that drive our commitment to excellence in event management and multimedia production.')) }}
             </p>
         </div>
 
@@ -28,8 +27,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Visi Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                    Menjadi kreator pengalaman terdepan yang menginspirasi dan mengubah persepsi melalui inovasi dan
-                    kreativitas tanpa batas.
+                    {{(ucfirst($setting->company_profile_vision ?? 'Menjadi perusahaan event management dan multimedia production terdepan yang dikenal secara nasional maupun internasional untuk inovasi, kualitas, dan dampak positifnya.')) }}
                 </p>
             </div>
 
@@ -44,8 +42,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Misi Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                    Menyediakan solusi event dan multimedia komprehensif yang berkualitas tinggi, terukur, dan berdampak
-                    maksimal bagi setiap klien.
+                   {{(ucfirst($setting->company_profile_mission ?? 'Memberikan layanan event management dan multimedia production yang inovatif, berkualitas tinggi, dan berdampak positif bagi klien dan masyarakat.')) }}
                 </p>
             </div>
 
@@ -60,7 +57,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Nilai Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                    Integritas, inovasi, kolaborasi, dan excellence adalah fondasi dalam setiap langkah perjalanan kami.
+                    {{ (ucfirst($setting->company_profile_values)) }}
                 </p>
             </div>
         </div>

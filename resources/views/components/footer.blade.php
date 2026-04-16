@@ -42,9 +42,9 @@
             <div>
                 <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
                 <div class="text-slate-300 text-sm space-y-2">
-                    <p>Jl. Latar Ireng No.6<br>Surakarta, Jawa Tengah</p>
-                    <p class="text-sky-400 font-medium">lookcreative.asia</p>
-                    <p class="text-slate-400">CV. Multimedia Anak Bangsa</p>
+                    <p>{{ $setting->address }}</p>
+                    <p class="text-sky-400 font-medium">{{ $setting->phone }}</p>
+                    
                 </div>
             </div>
 
@@ -54,7 +54,7 @@
         <div class="border-t border-slate-700 pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-400 text-sm">
-                    © 2026 Look Creative - CV. Multimedia Anak Bangsa. All rights reserved.
+                    © 2026 Look Creative 
                 </p>
                 <p class="text-sky-400 text-sm font-medium">
                     Professional Event Organizer & MICE Solutions Surakarta

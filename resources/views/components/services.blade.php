@@ -2,10 +2,17 @@
 
     <div class="max-w-6xl mx-auto text-center">
         <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
-            Boost Your <span class="text-white">Marketing</span>
+            {{ $setting->services_title }}
         </h1>
+        @php
+            $text = (ucfirst($setting->services_description ?? 'Your best partner to grow your business'));
+            $words = explode(' ', $text);
+            $last = array_pop($words);
+        @endphp
+
         <p class="text-xl md:text-2xl text-slate-200 mb-12">
-            Your best partner to <span class="font-semibold text-white">grow your business</span>
+            <span>{{ implode(' ', $words) }}</span>
+            <span class="font-semibold text-white"> {{ $last }}</span>
         </p>
 
         <div class="flex flex-wrap justify-center gap-4 md:gap-5 mb-6">
