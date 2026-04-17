@@ -1,4 +1,4 @@
-@props(['title' => config('app.name', 'Laravel')])
+@props(['title' => config('app.name', 'Akusaralab')])
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
@@ -18,6 +18,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon-v2.png">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
