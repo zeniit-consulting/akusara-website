@@ -12,9 +12,9 @@
         <nav class="flex-1 p-4 space-y-1 text-sm">
 
             <!-- Dashboard -->
-            <a href="{{ route('dashboard') }}"
+            <a href="{{ route('admin.dashboard') }}"
                class="flex items-center gap-3 px-4 py-2.5 rounded-lg transition-all duration-200 group
-               {{ request()->routeIs('dashboard') 
+               {{ request()->routeIs('admin.dashboard') 
                     ? 'bg-slate-800 text-white' 
                     : 'hover:bg-slate-800/70 hover:text-white' }}">
 
