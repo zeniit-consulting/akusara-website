@@ -42,7 +42,6 @@
                         <th class="px-6 py-4">#</th>
                         <th class="px-6 py-4">Company</th>
                         <th class="px-6 py-4">Contact</th>
-                        <th class="px-6 py-4">Status</th>
                         <th class="px-6 py-4 text-right">Action</th>
                     </tr>
                 </thead>
@@ -81,14 +80,7 @@
                                 <p class="text-gray-400 text-xs">{{ $setting->phone }}</p>
                             </td>
 
-                            <!-- STATUS -->
-                            <td class="px-6 py-4">
-                                <span
-                                    class="px-3 py-1 text-xs rounded-full 
-                                    {{ $setting->hero_title ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-400' }}">
-                                    {{ $setting->hero_title ? 'Completed' : 'Incomplete' }}
-                                </span>
-                            </td>
+                           
 
                             <!-- ACTION -->
                             <td class="px-6 py-4 flex justify-end gap-3">

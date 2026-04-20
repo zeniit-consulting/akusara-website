@@ -1,4 +1,9 @@
 <x-app-layout>
+     @if (session('error'))
+        <div class="bg-red-500 text-white p-3 rounded mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="p-6 max-w-6xl mx-auto space-y-6">
 
         <!-- HEADER -->
@@ -21,119 +26,46 @@
             @csrf
             @method('PUT')
 
-
-
-            <!-- ================= HERO ================= -->
-            <div class="bg-white rounded-2xl shadow p-6 space-y-5 mt-6">
-                <h2 class="text-lg font-semibold text-gray-800">Hero Section</h2>
-
-                <input type="text" name="hero_title" value="{{ old('hero_title', $setting->hero_title) }}"
-                    placeholder="Hero Title"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
-
-                <textarea name="hero_description" rows="3" placeholder="Hero Description"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('hero_description', $setting->hero_description) }}</textarea>
-
-                @if ($setting->hero_image)
-                    <img src="{{ asset('storage/' . $setting->hero_image) }}" class="w-40 rounded-lg border shadow-sm">
-                @endif
-
-                <input type="file" name="hero_image"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white shadow-sm file:mr-3 file:px-3 file:py-1 file:rounded-md file:border-0 file:bg-indigo-600 file:text-white hover:file:bg-indigo-700">
-            </div>
-
-            <!-- ================= ABOUT ================= -->
-            <div class="bg-white rounded-2xl shadow p-6 space-y-5 mt-6">
-                <h2 class="text-lg font-semibold text-gray-800">About</h2>
-
-                <input type="text" name="about_title" value="{{ old('about_title', $setting->about_title) }}"
-                    placeholder="About Title"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
-
-                <textarea name="about_description" rows="3" placeholder="About Description"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('about_description', $setting->about_description) }}</textarea>
-
-                @if ($setting->about_image)
-                    <img src="{{ asset('storage/' . $setting->about_image) }}" class="w-40 rounded-lg border shadow-sm">
-                @endif
-
-                <input type="file" name="about_image"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md bg-white shadow-sm file:mr-3 file:px-3 file:py-1 file:rounded-md file:border-0 file:bg-indigo-600 file:text-white hover:file:bg-indigo-700">
-            </div>
-
-            <!-- ================= SERVICES ================= -->
-            <div class="bg-white rounded-2xl shadow p-6 space-y-5 mt-6">
-                <h2 class="text-lg font-semibold text-gray-800">Services</h2>
-
-                <input type="text" name="services_title"
-                    value="{{ old('services_title', $setting->services_title) }}" placeholder="Services Title"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
-
-                <textarea name="services_description" rows="3" placeholder="Services Description"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('services_description', $setting->services_description) }}</textarea>
-            </div>
-
-            <!-- ================= COMPANY PROFILE ================= -->
-            <div class="bg-white rounded-2xl shadow p-6 space-y-5 mt-6">
-                <h2 class="text-lg font-semibold text-gray-800">Company Profile</h2>
-
-                <input type="text" name="company_profile_title"
-                    value="{{ old('company_profile_title', $setting->company_profile_title) }}"
-                    placeholder="Profile Title"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
-
-                <textarea name="company_profile_description" rows="3" placeholder="Description"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('company_profile_description', $setting->company_profile_description) }}</textarea>
-
-                <div class="grid md:grid-cols-2 gap-5">
-                    <textarea name="company_profile_vision" rows="3" placeholder="Vision"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('company_profile_vision', $setting->company_profile_vision) }}</textarea>
-
-                    <textarea name="company_profile_mission" rows="3" placeholder="Mission"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('company_profile_mission', $setting->company_profile_mission) }}</textarea>
-                </div>
-
-                <textarea name="company_profile_values" rows="3" placeholder="Values (one per line)"
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">{{ old('company_profile_values', $setting->company_profile_values) }}</textarea>
-            </div>
-
-            <!-- ================= COMPANY INFO ================= -->
             <div class="bg-white rounded-2xl shadow p-6 space-y-5 mt-6">
                 <h2 class="text-lg font-semibold text-gray-800">Company Information</h2>
-
-                <div class="grid md:grid-cols-2 gap-5">
-
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Company Name</label>
-                        <input type="text" name="company_name"
-                            value="{{ old('company_name', $setting->company_name) }}" placeholder="Enter company name"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
+                        <x-input-label for="company_name" :value="__('Company Name')" class="mb-1" />
+                        <x-text-input id="company_name" class="block mt-1 w-full" type="text" name="company_name"
+                            :value="old('company_name', $setting->company_name)"  autofocus autocomplete="organization" />
+                        @error('company_name')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
-                        <input type="email" name="email" value="{{ old('email', $setting->email) }}"
-                            placeholder="example@email.com"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
+                        <x-input-label for="email" :value="__('Email Address')" class="mb-1" />
+                        <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                            :value="old('email', $setting->email)"  autocomplete="email" />
+                        @error('email')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
-                        <input type="text" name="phone" value="{{ old('phone', $setting->phone) }}"
-                            placeholder="+62 xxx xxx xxx"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-600 mb-1">Address</label>
-                        <input type="text" name="address" value="{{ old('address', $setting->address) }}"
-                            placeholder="Enter address"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition">
+                        <x-input-label for="phone" :value="__('Phone')" class="mb-1" />
+                        <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone"
+                            :value="old('phone', $setting->phone)"  />
+                        @error('phone')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
 
-                    
-                </div>
+                    <div class="mt-3">
+                        <x-input-label for="address" value="Address" />
+
+                        <textarea name="address" id="address"
+                            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Enter company address" >{{ old('address', $setting->address) }}</textarea>
+
+                        <x-input-error :messages="$errors->get('address')" class="mt-2" />
+                    </div>
+
                 <div class="bg-white rounded-2xl shadow p-6 space-y-6 mt-4">
 
                     <!-- TITLE -->
@@ -177,8 +109,7 @@
                                     🎵
                                 </span>
 
-                                <input type="text" name="tiktok"
-                                    value="{{ old('tiktok', $setting->tiktok ?? '') }}"
+                                <input type="text" name="tiktok" value="{{ old('tiktok', $setting->tiktok ?? '') }}"
                                     placeholder="https://tiktok.com/@yourusername"
                                     class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 @error('tiktok') border-red-500 @enderror">
                             </div>

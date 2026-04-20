@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Settings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
 {
@@ -31,55 +32,39 @@ class SettingsController extends Controller
     public function store(Request $request)
     {
         // Validate and save settings
-        $validated = $request->validate([
-            'company_name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => [
-                'required',
-                'regex:/^62[0-9]{8,13}$/'
-            ],
-            [
-                'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.'
-            ],
-            'address' => 'nullable|string|max:500',
-            'logo' => 'nullable|image|max:2048',
-            'hero_title' => 'nullable|string|max:255',
-            'hero_description' => 'nullable|string',
-            'hero_image' => 'nullable|image|max:2048',
-            'about_title' => 'nullable|string|max:255',
-            'about_description' => 'nullable|string',
-            'about_image' => 'nullable|image|max:2048',
-            'services_title' => 'nullable|string|max:255',
-            'services_description' => 'nullable|string',
-            'company_profile_title' => 'nullable|string|max:255',
-            'company_profile_description' => 'nullable|string',
-            'company_profile_vision' => 'nullable|string',
-            'company_profile_mission' => 'nullable|string',
-            'company_profile_values' => 'nullable|string',
-            'linkedin' => 'nullable|string',
-            'instagram' => 'nullable|string',
-            'tiktok' => 'nullable|string',
+        try {
+            $validated = $request->validate(
+                [
+                    'company_name' => 'required|string|max:255',
+                    'email' => 'required|email|max:255',
+                    'phone' => [
+                        'required',
+                        'regex:/^62[0-9]{8,13}$/'
+                    ],
+                    'address' => 'required|string|max:1000',
+                    'logo' => 'nullable|image|max:2048',
+                    'linkedin' => 'nullable|url',
+                    'instagram' => 'nullable|url',
+                    'tiktok' => 'nullable|url',
+                ],
+                [
+                    'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.',
+                ]
+            );
 
-        ]);
+            // Handle logo upload if provided
+            if ($request->hasFile('logo')) {
+                $validated['logo'] = $request->file('logo')->store('logos', 'public');
+            }
 
-        // Handle logo and image section upload if provided
-        if ($request->hasFile('hero_image')) {
-            $validated['hero_image'] = $request->file('hero_image')->store('hero_images', 'public');
+            Settings::create($validated);
+
+            return redirect()->route('admin.settings.index')->with('success', 'Created successfully.');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->validator)->withInput();
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while creating the settings. Please try again.')->withInput();
         }
-
-        if ($request->hasFile('about_image')) {
-            $validated['about_image'] = $request->file('about_image')->store('about_images', 'public');
-        }
-
-        if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('logos', 'public');
-        }
-
-
-
-        Settings::create($validated);
-
-        return redirect()->route('admin.settings.index')->with('success', 'Created successfully.');
     }
 
     /**
@@ -107,55 +92,44 @@ class SettingsController extends Controller
     {
         $setting = Settings::findOrFail($id);
 
-        // Validate and update settings
-        $validated = $request->validate([
-            'company_name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'phone' => [
-                'required',
-                'regex:/^62[0-9]{8,13}$/'
+        $validated = $request->validate(
+            [
+                'company_name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'phone' => ['required', 'regex:/^62[0-9]{8,13}$/'],
+                'address' => 'required|string|max:1000',
+                'logo' => 'nullable|image|max:2048',
+                'linkedin' => 'nullable|url',
+                'instagram' => 'nullable|url',
+                'tiktok' => 'nullable|url',
             ],
             [
-                'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.'
-            ],
-            'address' => 'nullable|string|max:500',
-            'logo' => 'nullable|image|max:2048',
-            'hero_title' => 'nullable|string|max:255',
-            'hero_description' => 'nullable|string',
-            'hero_image' => 'nullable|image|max:2048',
-            'about_title' => 'nullable|string|max:255',
-            'about_description' => 'nullable|string',
-            'about_image' => 'nullable|image|max:2048',
-            'services_title' => 'nullable|string|max:255',
-            'services_description' => 'nullable|string',
-            'company_profile_title' => 'nullable|string|max:255',
-            'company_profile_description' => 'nullable|string',
-            'company_profile_vision' => 'nullable|string',
-            'company_profile_mission' => 'nullable|string',
-            'company_profile_values' => 'nullable|string',
-            'linkedin' => 'nullable|string',
-            'instagram' => 'nullable|string',
-            'tiktok' => 'nullable|string',
-        ]);
+                'phone.regex' => 'The phone number must start with "62" and be followed by 8 to 13 digits.',
+            ]
+        );
 
-        // Handle logo and image section upload if provided
+        try {
 
-        if ($request->hasFile('hero_image')) {
-            $validated['hero_image'] = $request->file('hero_image')->store('hero_images', 'public');
+            if ($request->hasFile('logo')) {
+
+                if ($setting->logo && Storage::disk('public')->exists($setting->logo)) {
+                    Storage::disk('public')->delete($setting->logo);
+                }
+
+                $validated['logo'] = $request->file('logo')->store('logos', 'public');
+            }
+
+            $setting->update($validated);
+
+            return redirect()
+                ->route('admin.settings.index')
+                ->with('success', 'Updated successfully ✅');
+        } catch (\Exception $e) {
+
+            return back()
+                ->with('error', 'An error occurred while updating the settings.')
+                ->withInput();
         }
-
-        if ($request->hasFile('about_image')) {
-            $validated['about_image'] = $request->file('about_image')->store('about_images', 'public');
-        }
-
-        if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('logos', 'public');
-        }
-
-
-        $setting->update($validated);
-
-        return redirect()->route('admin.settings.index')->with('success', ' Updated successfully.');
     }
 
     /**

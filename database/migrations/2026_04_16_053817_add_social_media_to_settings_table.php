@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->string('tiktok')->nullable();
-            $table->string('instagram')->nullable();
-            $table->string('linkedin')->nullable();
+            $table->string('tiktok')->nullable()->after('logo');
+            $table->string('instagram')->nullable()->after('tiktok');
+            $table->string('linkedin')->nullable()->after('instagram');
         });
     }
 
