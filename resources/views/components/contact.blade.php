@@ -101,41 +101,50 @@
                 <div class="pt-6">
                     <h3 class="text-lg font-semibold text-white mb-4">Follow Us</h3>
                     <div class="flex flex-wrap gap-3">
-                        @if ($setting->tiktok)
-                            <a href="{{ $setting->tiktok }}" target="_blank" rel="noopener noreferrer"
-                                aria-label="TikTok"
-                                class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white border border-slate-200 text-[#1800AD] 
-           hover:bg-[#1800AD] hover:text-white hover:scale-105 hover:shadow-lg 
-           transition-all duration-300">
 
-                                <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
-                                    <path
-                                        d="M12.75 2h2.25c.36 2.02 1.74 3.66 3.75 4.13v2.31a7.74 7.74 0 01-3.75-1.06v6.83a5.5 5.5 0 11-5.5-5.5c.29 0 .57.02.84.07v2.27a3.25 3.25 0 102.41 3.16V2z" />
-                                </svg>
-                            </a>
-                        @endif
-                        @if ($setting->instagram)
-                            <a href="{{ $setting->instagram }}" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center w-12 h-12 rounded-3xl bg-white border border-slate-200 text-[#1800AD] hover:bg-slate-50 transition"
-                                aria-label="Instagram">
-                                <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-[#1800AD]">
-                                    <path
-                                        d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5C18.55 4 20 5.45 20 7.75v8.5C20 18.55 18.55 20 16.25 20h-8.5C5.45 20 4 18.55 4 16.25v-8.5C4 5.45 5.45 4 7.75 4zm8.75 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z" />
-                                </svg>
-                            </a>
-                        @endif
+    @if ($setting->tiktok ?? false)
+        <a href="{{ $setting->tiktok }}" target="_blank" rel="noopener noreferrer"
+            aria-label="TikTok"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-2xl 
+                   bg-white border border-slate-200 text-[#1800AD]
+                   transition-all duration-300 
+                   hover:bg-[#1800AD] hover:text-white hover:scale-105 hover:shadow-lg">
 
-                        @if ($setting->linkedin)
-                            <a href="{{ $setting->linkedin }}" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center justify-center w-12 h-12 rounded-3xl bg-white border border-slate-200 text-[#1800AD] hover:bg-slate-50 transition"
-                                aria-label="LinkedIn">
-                                <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current text-[#1800AD]">
-                                    <path
-                                        d="M20.45 20.45h-3.24v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.09V9h3.11v1.56h.04c.43-.82 1.49-1.69 3.07-1.69 3.29 0 3.9 2.17 3.9 4.98v6.6zM5.34 7.43a1.8 1.8 0 110-3.6 1.8 1.8 0 010 3.6zM6.88 20.45H3.8V9h3.08v11.45z" />
-                                </svg>
-                            </a>
-                        @endif
-                    </div>
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M12.75 2h2.25c.36 2.02 1.74 3.66 3.75 4.13v2.31a7.74 7.74 0 01-3.75-1.06v6.83a5.5 5.5 0 11-5.5-5.5c.29 0 .57.02.84.07v2.27a3.25 3.25 0 102.41 3.16V2z"/>
+            </svg>
+        </a>
+    @endif
+
+    @if ($setting->instagram ?? false)
+        <a href="{{ $setting->instagram }}" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-2xl 
+                   bg-white border border-slate-200 text-[#1800AD]
+                   transition-all duration-300 
+                   hover:bg-[#1800AD] hover:text-white hover:scale-105 hover:shadow-lg">
+
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5C18.55 4 20 5.45 20 7.75v8.5C20 18.55 18.55 20 16.25 20h-8.5C5.45 20 4 18.55 4 16.25v-8.5C4 5.45 5.45 4 7.75 4zm8.75 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            </svg>
+        </a>
+    @endif
+
+    @if ($setting->linkedin ?? false)
+        <a href="{{ $setting->linkedin }}" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="inline-flex items-center justify-center w-12 h-12 rounded-2xl 
+                   bg-white border border-slate-200 text-[#1800AD]
+                   transition-all duration-300 
+                   hover:bg-[#1800AD] hover:text-white hover:scale-105 hover:shadow-lg">
+
+            <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current">
+                <path d="M20.45 20.45h-3.24v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.44-2.13 2.94v5.66H9.09V9h3.11v1.56h.04c.43-.82 1.49-1.69 3.07-1.69 3.29 0 3.9 2.17 3.9 4.98v6.6zM5.34 7.43a1.8 1.8 0 110-3.6 1.8 1.8 0 010 3.6zM6.88 20.45H3.8V9h3.08v11.45z"/>
+            </svg>
+        </a>
+    @endif
+
+</div>
                 </div>
 
             </div>
@@ -145,7 +154,7 @@
         <div class="rounded-[40px] bg-white border border-slate-200 p-8 shadow-xl">
             <h3 class="text-3xl font-bold text-slate-900 mb-8">Start Your Project</h3>
 
-            
+
 
             <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
                 @csrf
@@ -155,6 +164,7 @@
                     <label class="block text-sm text-slate-700">
                         Full Name
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Your name"
+                            required
                             class="mt-2 w-full rounded-3xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-[#1800AD] focus:ring-2 focus:ring-[#1800AD]/30" />
                         @error('name')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -168,6 +178,7 @@
                     <label class="block text-sm text-slate-700">
                         Email
                         <input type="email" name="email" value="{{ old('email') }}" placeholder="your@email.com"
+                            required
                             class="mt-2 w-full rounded-3xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-[#1800AD] focus:ring-2 focus:ring-[#1800AD]/30" />
                         @error('email')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -181,7 +192,7 @@
                     {{-- Phone --}}
                     <label class="block text-sm text-slate-700">
                         Phone
-                        <input type="text" name="phone" value="{{ old('phone') }}"
+                        <input type="text" name="phone" value="{{ old('phone') }}" required
                             placeholder="+62 xxx xxx xxx"
                             class="mt-2 w-full rounded-3xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-[#1800AD] focus:ring-2 focus:ring-[#1800AD]/30" />
                     </label>
@@ -195,6 +206,7 @@
                 <label class="block text-sm text-slate-700">
                     Project Details
                     <textarea name="message" rows="5" placeholder="Tell us about your event vision, goals, and requirements..."
+                        required
                         class="mt-2 w-full rounded-3xl border border-slate-300 px-4 py-4 text-slate-900 outline-none transition focus:border-[#1800AD] focus:ring-2 focus:ring-[#1800AD]/30 resize-none">{{ old('message') }}</textarea>
                     @error('message')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

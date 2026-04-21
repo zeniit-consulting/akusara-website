@@ -3,11 +3,11 @@
         <!-- Header Section -->
         <div class="text-center mb-16">
             <h2 class="text-white text-5xl md:text-6xl font-bold mb-4" data-aos="fade-up" data-aos-duration="900">
-                {{ (ucwords($setting->company_profile_title ?? 'Company Profile')) }}
+                {{ ucwords($companyProfile->company_profile_title ?? 'Company Profile') }}
             </h2>
             <p class="text-slate-200 text-lg max-w-2xl mx-auto" data-aos="fade-up" data-aos-duration="900"
                 data-aos-delay="150">
-                {{(ucfirst($setting->company_profile_description ?? 'Discover our vision, mission, and core values that drive our commitment to excellence in event management and multimedia production.')) }}
+                {{ ucfirst($companyProfile->company_profile_description ?? 'Discover our vision, mission, and core values that drive our commitment to excellence in event management and multimedia production.') }}
             </p>
         </div>
 
@@ -27,7 +27,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Visi Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                    {{(ucfirst($setting->company_profile_vision ?? 'Menjadi perusahaan event management dan multimedia production terdepan yang dikenal secara nasional maupun internasional untuk inovasi, kualitas, dan dampak positifnya.')) }}
+                    {{ ucfirst($companyProfile->company_profile_vision ?? 'Menjadi perusahaan event management dan multimedia production terdepan yang dikenal secara nasional maupun internasional untuk inovasi, kualitas, dan dampak positifnya.') }}
                 </p>
             </div>
 
@@ -42,7 +42,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Misi Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                   {{(ucfirst($setting->company_profile_mission ?? 'Memberikan layanan event management dan multimedia production yang inovatif, berkualitas tinggi, dan berdampak positif bagi klien dan masyarakat.')) }}
+                    {{ ucfirst($companyProfile->company_profile_mission ?? 'Memberikan layanan event management dan multimedia production yang inovatif, berkualitas tinggi, dan berdampak positif bagi klien dan masyarakat.') }}
                 </p>
             </div>
 
@@ -57,7 +57,7 @@
                 </div>
                 <h3 class="text-white text-2xl font-semibold mb-3">Nilai Kami</h3>
                 <p class="text-slate-200 leading-relaxed">
-                    {{ (ucfirst($setting->company_profile_values)) }}
+                    {{ ucfirst($companyProfile->company_profile_values ?? 'Nilai-nilai yang kami pegang teguh dalam setiap proyek yang kami kerjakan.') }}
                 </p>
             </div>
         </div>
@@ -66,97 +66,142 @@
         <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl" data-aos="fade-up" data-aos-duration="900"
             data-aos-delay="400">
             <h3 class="text-[#1800AD] text-3xl md:text-4xl font-bold mb-8 text-center">Layanan Unggulan</h3>
+
+
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Event Management -->
-                <div
-                    class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4
-                                class="text-slate-900 font-bold text-xl mb-2 group-hover:text-[#1800AD] transition-colors">
-                                Event Management</h4>
-                            <p class="text-slate-600 leading-relaxed">Merencanakan dan mengelola event dari konsep
-                                hingga eksekusi dengan detail sempurna dan hasil maksimal.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Multimedia Production -->
-                <div
-                    class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4
-                                class="text-slate-900 font-bold text-xl mb-2 group-hover:text-[#1800AD] transition-colors">
-                                Multimedia Production</h4>
-                            <p class="text-slate-600 leading-relaxed">Menciptakan konten visual dan audio berkualitas
-                                tinggi untuk berbagai media dengan teknologi terkini.</p>
-                        </div>
-                    </div>
-                </div>
+                @if ($featuredServices && $featuredServices->count() > 0)
 
-                <!-- Stage & Booth Production -->
-                <div
-                    class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="flex items-start gap-4">
+                  
+                    @foreach ($featuredServices as $service)
                         <div
-                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="flex-1">
-                            <h4
-                                class="text-slate-900 font-bold text-xl mb-2 group-hover:text-[#1800AD] transition-colors">
-                                Stage & Booth Production</h4>
-                            <p class="text-slate-600 leading-relaxed">Desain dan produksi panggung serta booth yang
-                                memukau dan profesional dengan konsep kreatif.</p>
-                        </div>
-                    </div>
-                </div>
+                            class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
 
-                <!-- Media Handling & Coverage -->
-                <div
-                    class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
-                                </path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
+                            <div class="flex items-start gap-4">
+
+                                {{-- ICON DEFAULT (nanti bisa kamu buat dinamis kalau mau) --}}
+                                <div
+                                    class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <div class="flex-1">
+                                    <h4 class="text-slate-900 font-bold text-xl mb-2 line-clamp-2">
+                                        {{ Str::limit($service->featured_services_title, 50) }}
+                                    </h4>
+
+                                    <p class="text-slate-600 leading-relaxed line-clamp-3">
+                                        {{ Str::limit($service->featured_services_description, 120) }}
+                                    </p>
+                                </div>
+
+                            </div>
                         </div>
-                        <div class="flex-1">
-                            <h4
-                                class="text-slate-900 font-bold text-xl mb-2 group-hover:text-[#1800AD] transition-colors">
-                                Media Handling & Coverage</h4>
-                            <p class="text-slate-600 leading-relaxed">Dokumentasi dan coverage lengkap untuk memastikan
-                                setiap momen terabadikan dengan kualitas profesional.</p>
+                    @endforeach
+                @else
+                    
+
+                    <!-- Event Management -->
+                    <div
+                        class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-slate-900 font-bold text-xl mb-2">Event Management</h4>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Merencanakan dan mengelola event dari konsep hingga eksekusi dengan detail sempurna
+                                    dan hasil maksimal.
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+
+                    <!-- Multimedia Production -->
+                    <div
+                        class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-slate-900 font-bold text-xl mb-2">Multimedia Production</h4>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Menciptakan konten visual dan audio berkualitas tinggi untuk berbagai media dengan
+                                    teknologi terkini.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stage & Booth Production -->
+                    <div
+                        class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-slate-900 font-bold text-xl mb-2">Stage & Booth Production</h4>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Desain dan produksi panggung serta booth yang memukau dan profesional dengan konsep
+                                    kreatif.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Media Handling -->
+                    <div
+                        class="group bg-gradient-to-br from-[#1800AD]/5 to-[#1800AD]/10 rounded-2xl p-6 border border-[#1800AD]/20 hover:border-[#1800AD]/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1800AD] to-[#120085] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-slate-900 font-bold text-xl mb-2">Media Handling & Coverage</h4>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Dokumentasi dan coverage lengkap untuk memastikan setiap momen terabadikan dengan
+                                    kualitas profesional.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
+
             </div>
         </div>
     </div>

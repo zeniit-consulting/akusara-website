@@ -19,11 +19,19 @@
             <div>
                 <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
                 <ul class="space-y-2 text-slate-300 text-sm">
-                    <li><a href="#" class="hover:text-sky-400 transition">Live Event Production</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition">Virtual & Hybrid Events</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition">MICE Solutions</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition">Creative Design</a></li>
-                    <li><a href="#" class="hover:text-sky-400 transition">Digital Solutions</a></li>
+                    @if ($featuredServices && $featuredServices->count() > 0)
+                        @foreach ($featuredServices as $service)
+                            <li><a href="#company-profile"
+                                    class="hover:text-sky-400 transition">{{ $service->featured_services_title }}</a>
+                            </li>
+                        @endforeach
+                    @else
+                        <li><a href="#company-profile" class="hover:text-sky-400 transition">Live Event Production</a></li>
+                        <li><a href="#company-profile" class="hover:text-sky-400 transition">Virtual & Hybrid Events</a></li>
+                        <li><a href="#company-profile" class="hover:text-sky-400 transition">MICE Solutions</a></li>
+                        <li><a href="#company-profile" class="hover:text-sky-400 transition">Creative Design </a></li>
+                        <li><a href="#company-profile" class="hover:text-sky-400 transition">Digital Solutions</a></li>
+                    @endif
                 </ul>
             </div>
 
@@ -42,9 +50,9 @@
             <div>
                 <h4 class="text-lg font-semibold text-white mb-4">Contact Info</h4>
                 <div class="text-slate-300 text-sm space-y-2">
-                    <p>{{ $setting->address }}</p>
-                    <p class="text-sky-400 font-medium">{{ $setting->phone }}</p>
-                    
+                    <p>{{ $setting->address ?? '-' }}</p>
+                    <p class="text-sky-400 font-medium">{{ $setting->phone ?? '-' }}</p>
+                    <p class="text-sky-400 font-medium">{{ $setting->email ?? '-' }}</p>
                 </div>
             </div>
 
@@ -54,7 +62,7 @@
         <div class="border-t border-slate-700 pt-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-400 text-sm">
-                    © 2026 Look Creative 
+                    © 2026 Look Creative
                 </p>
                 <p class="text-sky-400 text-sm font-medium">
                     Professional Event Organizer & MICE Solutions Surakarta
