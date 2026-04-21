@@ -14,6 +14,30 @@ export default {
             fontFamily: {
                 sans: ["Poppins", "sans-serif"],
             },
+            animation: {
+                floatUp: "floatUp 3s ease-in-out infinite",
+                floatDown: "floatDown 3s ease-in-out infinite",
+                marquee: "marquee 15s linear infinite",
+                marqueeReverse: "marqueeReverse 15s linear infinite",
+            },
+            keyframes: {
+                floatUp: {
+                    "0%, 100%": { transform: "translateY(0px)" },
+                    "50%": { transform: "translateY(15px)" },
+                },
+                floatDown: {
+                    "0%, 100%": { transform: "translateY(0px)" },
+                    "50%": { transform: "translateY(-15px)" },
+                },
+                marquee: {
+                    "0%": { transform: "translateX(0%)" },
+                    "100%": { transform: "translateX(-50%)" },
+                },
+                marqueeReverse: {
+                    "0%": { transform: "translateX(-50%)" },
+                    "100%": { transform: "translateX(0%)" },
+                },
+            },
         },
     },
 
