@@ -1,7 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FeaturedServicesController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\InquiryController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -13,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-// Public route for the home page
+// Public route for the home pageo
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Admin routes
@@ -33,6 +38,13 @@ Route::middleware(['auth', 'verified'])
         // Resource routes for settings and inquiries
         Route::resource('settings', SettingsController::class);
         Route::resource('inquiries', InquiryController::class);
+
+        // Hero routes
+        Route::resource('/copywriting/hero', HeroController::class);
+        Route::resource('/copywriting/about', AboutController::class);
+        Route::resource('/copywriting/portfolio', PortfolioController::class);
+        Route::resource('/copywriting/company-profile', CompanyProfileController::class);
+        Route::resource('/copywriting/featured-services', FeaturedServicesController::class);
     });
 
 // Contact form route
