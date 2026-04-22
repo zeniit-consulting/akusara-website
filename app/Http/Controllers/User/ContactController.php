@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function index()
+    {
+        $inquiries = Inquiry::latest()->first();
+        return view('home.message-success', compact('inquiries'));
+    }
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -21,6 +26,6 @@ class ContactController extends Controller
 
         Inquiry::create($validated);
 
-        return back()->with('success', 'Message sent successfully!');
+        return redirect()->route('contact.index')->with('success', 'Message sent successfully!');
     }
 }

@@ -52,6 +52,6 @@ Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('por
 
 // Contact form route
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
-
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
 require __DIR__ . '/auth.php';
