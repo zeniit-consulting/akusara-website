@@ -72,12 +72,30 @@
             </a>
 
             <!-- Copywriting -->
-            <div x-data="{ open: {{ request()->is('admin/copywriting*') ? 'true' : 'false' }} }">
+            <div x-data="{
+                open: {{ request()->routeIs(
+                    'admin.hero.*',
+                    'admin.about.*',
+                    'admin.portfolio.*',
+                    'admin.company-profile.*',
+                    'admin.featured-services.*',
+                )
+                    ? 'true'
+                    : 'false' }}
+            }">
 
                 {{-- PARENT MENU --}}
                 <button @click="open = !open"
                     class="flex items-center justify-between w-full gap-3 px-4 py-2.5 rounded-lg transition-all duration-200
-        {{ request()->is('admin/copywriting*') ? 'bg-slate-800 text-white' : 'hover:bg-slate-800/70 hover:text-white' }}">
+        {{ request()->routeIs(
+            'admin.hero.*',
+            'admin.about.*',
+            'admin.portfolio.*',
+            'admin.company-profile.*',
+            'admin.featured-services.*',
+        )
+            ? 'bg-slate-800 text-white'
+            : 'hover:bg-slate-800/70 hover:text-white' }}">
 
                     <div class="flex items-center gap-3">
                         <svg class="w-5 h-5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -100,35 +118,35 @@
                     {{-- HERO --}}
                     <a href="{{ route('admin.hero.index') }}"
                         class="block px-4 py-2 rounded-lg text-sm transition
-            {{ request()->is('admin/copywriting/hero*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
+            {{ request()->routeIs('admin.hero.*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
                         Hero
                     </a>
 
                     {{-- ABOUT --}}
                     <a href="{{ route('admin.about.index') }}"
                         class="block px-4 py-2 rounded-lg text-sm transition
-            {{ request()->is('admin/copywriting/about*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
+            {{ request()->routeIs('admin.about.*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
                         About
                     </a>
 
                     {{-- PORTFOLIO --}}
                     <a href="{{ route('admin.portfolio.index') }}"
                         class="block px-4 py-2 rounded-lg text-sm transition
-            {{ request()->is('admin/copywriting/portfolio*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
+            {{ request()->routeIs('admin.portfolio.*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
                         Portfolio
                     </a>
 
                     {{-- COMPANY PROFILE --}}
                     <a href="{{ route('admin.company-profile.index') }}"
                         class="block px-4 py-2 rounded-lg text-sm transition
-            {{ request()->is('admin/copywriting/company-profile*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
+            {{ request()->routeIs('admin.company-profile.*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
                         Company Profile
                     </a>
 
-                    {{-- Featured Services --}}
+                    {{-- FEATURED SERVICES --}}
                     <a href="{{ route('admin.featured-services.index') }}"
                         class="block px-4 py-2 rounded-lg text-sm transition
-            {{ request()->is('admin/copywriting/featured-services*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
+            {{ request()->routeIs('admin.featured-services.*') ? 'bg-slate-700 text-white' : 'hover:bg-slate-700/60' }}">
                         Featured Services
                     </a>
 
