@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Akusaralab') }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/favicon-v2.png">
+    <link rel="icon" href="/favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
