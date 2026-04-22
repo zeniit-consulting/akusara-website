@@ -15,7 +15,7 @@
             <a href="#portfolio" class="text-white hover:text-blue-100 transition font-medium nav-link">Portfolio</a>
             <a href="#company-profile" class="text-white hover:text-blue-100 transition font-medium nav-link">Company
                 Profile</a>
-            <a href="#contact" class="text-white hover:text-blue-100 transition font-medium nav-link">Contact</a>
+            <a href="{{ route('contact.index') }}" target="blank" class="text-white hover:text-blue-100 transition font-medium nav-link">Contact</a>
         </div>
 
         <!-- Mobile Toggle -->

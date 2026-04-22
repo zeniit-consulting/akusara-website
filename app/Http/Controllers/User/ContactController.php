@@ -10,9 +10,9 @@ class ContactController extends Controller
 {
     public function index()
     {
-        $inquiries = Inquiry::latest()->first();
-        return view('home.message-success', compact('inquiries'));
+        return view('home.contact.index');
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -26,6 +26,12 @@ class ContactController extends Controller
 
         Inquiry::create($validated);
 
-        return redirect()->route('contact.index')->with('success', 'Message sent successfully!');
+        return redirect()->route('contact.message-success')->with('success', 'Message sent successfully!');
+    }
+
+    public function message_success()
+    {
+        $inquiries = Inquiry::latest()->first();
+        return view('home.contact.message-success', compact('inquiries'));
     }
 }

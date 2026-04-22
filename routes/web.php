@@ -51,7 +51,8 @@ Route::middleware(['auth', 'verified'])
 Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
 
 // Contact form route
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/message-success', [ContactController::class, 'message_success'])->name('contact.message-success');
 
 require __DIR__ . '/auth.php';
