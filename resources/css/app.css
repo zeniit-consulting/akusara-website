@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer base {
     html {
         scroll-behavior: smooth;
@@ -12,7 +13,16 @@
     body {
         background-color: #09090f;
         font-family: "Poppins", sans-serif;
+
+        /* 🔥 Smooth rendering */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    
+    * {
+        -webkit-tap-highlight-color: transparent;
     }
 }
-
 
