@@ -47,7 +47,11 @@ Route::middleware(['auth', 'verified'])
         Route::resource('/copywriting/featured-services', FeaturedServicesController::class);
     });
 
+// Route for portfolio details using slug
+Route::get('/portfolio/{slug}', [PortfolioController::class, 'show'])->name('portfolio.show');
+
 // Contact form route
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 
 require __DIR__ . '/auth.php';

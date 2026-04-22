@@ -66,10 +66,10 @@ class PortfolioController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        // $portfolio = Portfolio::findOrFail($id);
-        // return view('admin.copywriting.portfolio.show', compact('portfolio'));
+        $portfolio = Portfolio::where('slug', $slug)->firstOrFail();
+        return view('home.portfolio-detail', compact('portfolio'));
     }
 
     /**

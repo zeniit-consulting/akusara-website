@@ -14,7 +14,7 @@
 
                 @foreach ($portfolios as $item)
                     <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300
-    {{ $loop->index % 2 == 0 ? 'animate-floatUp' : 'animate-floatDown' }}"
+                     {{ $loop->index % 2 == 0 ? 'animate-floatUp' : 'animate-floatDown' }}"
                         style="animation-delay: {{ $loop->index * 0.3 }}s">
 
                         <!-- Image -->
@@ -33,7 +33,7 @@
                                     {{ $item->portfolio_title }}
                                 </h3>
 
-                                <a href="#"
+                                <a href="{{ route('portfolio.show', $item->slug) }}"
                                     class="text-sm text-green-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
                                     View
                                     <span class="transition-transform group-hover:translate-x-1">→</span>
