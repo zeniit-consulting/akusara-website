@@ -23,7 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Admin routes
 Route::middleware(['auth', 'verified'])
-    ->prefix('admin')
+    ->prefix('aksr-admin')
     ->name('admin.')
     ->group(function () {
 
