@@ -87,7 +87,7 @@
                 <div class="bg-white rounded-3xl shadow-lg p-8">
 
                     <h2 class="text-lg font-semibold text-slate-800 mb-4">
-                        Project Details
+                        Message
                     </h2>
 
                     <div class="bg-slate-50 rounded-2xl p-2 leading-relaxed text-slate-700 ">

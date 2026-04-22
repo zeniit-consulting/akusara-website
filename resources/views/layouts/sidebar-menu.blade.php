@@ -67,7 +67,7 @@
 
                 <!-- Badge -->
                 <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
-                    3
+                    {{ \App\Models\Inquiry::where('is_read', false)->count() }}
                 </span>
             </a>
 
