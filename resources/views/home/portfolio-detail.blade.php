@@ -9,9 +9,22 @@
             <!-- Header -->
             <div class="mb-12">
                 <h1
-                    class="text-5xl md:text-6xl font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-[#1800AD] via-purple-600 to-pink-600">
-                    {{ $portfolio->portfolio_title }}
-                </h1>
+    class="
+        text-s
+        break-words
+        text-3xl md:text-4xl
+        font-bold
+        leading-tight
+        text-transparent
+        bg-clip-text
+        bg-gradient-to-r
+        from-[#1800AD]
+        via-purple-600
+        to-pink-600
+    "
+>
+    {{ $portfolio->portfolio_title }}
+</h1>
                 <p class="text-[#1800AD] mt-4 text-lg font-semibold">
                     {{ $portfolio->portfolio_category ?? 'Uncategorized' }}
                 </p>

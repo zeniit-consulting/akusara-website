@@ -30,7 +30,7 @@
 
                             <div class="flex items-center justify-between">
                                 <h3 class="font-semibold text-slate-900 text-lg">
-                                    {{ $item->portfolio_title }}
+                                    {{ Str::limit($item->portfolio_title, 50) }}
                                 </h3>
 
                                 <a href="{{ route('portfolio.show', $item->slug) }}"
