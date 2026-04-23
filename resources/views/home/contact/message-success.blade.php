@@ -131,4 +131,5 @@
         animation: bounce 2s infinite;
     }
 </style>
+<x-footer />
 </x-landing-layout>
