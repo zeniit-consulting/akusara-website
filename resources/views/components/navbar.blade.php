@@ -9,13 +9,13 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center text-sm md:text-base gap-10">
-            <a href="#home" class="text-white hover:text-blue-100 transition font-medium nav-link">Home</a>
-            <a href="#about" class="text-white hover:text-blue-100 transition font-medium nav-link">About</a>
-            <a href="#services" class="text-white hover:text-blue-100 transition font-medium nav-link">Services</a>
-            <a href="#portfolio" class="text-white hover:text-blue-100 transition font-medium nav-link">Portfolio</a>
-            <a href="#company-profile" class="text-white hover:text-blue-100 transition font-medium nav-link">Company
+            <a href="{{ route('home') }}#home" class="text-white hover:text-blue-100 transition font-medium nav-link">Home</a>
+            <a href="{{ route('home') }}#about" class="text-white hover:text-blue-100 transition font-medium nav-link">About</a>
+            <a href="{{ route('home') }}#services" class="text-white hover:text-blue-100 transition font-medium nav-link">Services</a>
+            <a href="{{ route('home') }}#portfolio" class="text-white hover:text-blue-100 transition font-medium nav-link">Portfolio</a>
+            <a href="{{ route('home') }}#company-profile" class="text-white hover:text-blue-100 transition font-medium nav-link">Company
                 Profile</a>
-            <a href="{{ route('contact.index') }}" target="blank" class="text-white hover:text-blue-100 transition font-medium nav-link">Contact</a>
+            <a href="{{ route('contact.index') }}"  class="text-white hover:text-blue-100 transition font-medium nav-link">Contact</a>
         </div>
 
         <!-- Mobile Toggle -->
