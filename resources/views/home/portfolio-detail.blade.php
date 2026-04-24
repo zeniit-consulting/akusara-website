@@ -1,6 +1,6 @@
 <x-landing-layout>
     <x-navbar />
-    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-gray-900 px-6 py-32">
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-gray-900 px-6 py-32 pb-8">
         <!-- Container -->
         <div class="max-w-6xl mx-auto">
 
