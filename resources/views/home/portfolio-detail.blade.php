@@ -1,6 +1,6 @@
 <x-landing-layout>
-    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-gray-900 px-6 py-16">
-
+    <x-navbar />
+    <div class="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-gray-900 px-6 py-32">
         <!-- Container -->
         <div class="max-w-6xl mx-auto">
 
@@ -9,7 +9,7 @@
             <!-- Header -->
             <div class="mb-12">
                 <h1
-    class="
+                    class="
         text-s
         break-words
         text-3xl md:text-4xl
@@ -21,10 +21,9 @@
         from-[#1800AD]
         via-purple-600
         to-pink-600
-    "
->
-    {{ $portfolio->portfolio_title }}
-</h1>
+    ">
+                    {{ $portfolio->portfolio_title }}
+                </h1>
                 <p class="text-[#1800AD] mt-4 text-lg font-semibold">
                     {{ $portfolio->portfolio_category ?? 'Uncategorized' }}
                 </p>
@@ -33,7 +32,9 @@
             <!-- Thumbnail Hero -->
             <div class="relative rounded-3xl overflow-hidden border-2 border-[#1800AD] shadow-2xl mb-12">
                 <img src="{{ $portfolio->portfolio_image
-                    ? asset('storage/' . $portfolio->portfolio_image)
+                    ? (Str::startsWith($portfolio->portfolio_image, ['http://', 'https://'])
+                        ? $portfolio->portfolio_image
+                        : asset('storage/' . $portfolio->portfolio_image))
                     : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80' }}"
                     class="w-full h-96 object-cover">
 
@@ -163,4 +164,5 @@
         </div>
 
     </div>
+    <x-footer />
 </x-landing-layout>

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\PortfolioCategory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Portfolio extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'portfolio_title',
         'portfolio_description',

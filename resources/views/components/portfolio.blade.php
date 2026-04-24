@@ -20,7 +20,9 @@
                         <!-- Image -->
                         <div class="relative overflow-hidden">
                             <img src="{{ $item->portfolio_image
-                                ? asset('storage/' . $item->portfolio_image)
+                                ? (Str::startsWith($item->portfolio_image, ['http://', 'https://'])
+                                    ? $item->portfolio_image
+                                    : asset('storage/' . $item->portfolio_image))
                                 : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80' }}"
                                 class="w-full h-44 object-cover">
                         </div>
