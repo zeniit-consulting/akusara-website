@@ -1,4 +1,4 @@
-<section id="contact" class="scroll-mt-20 py-20 bg-[#1800AD] px-6">
+<section id="contact" class="scroll-mt-20 py-20 bg-[#1800AD] px-6 mt-6">
 
     <div class="max-w-6xl mx-auto text-center mb-16">
         <h2 class="text-5xl font-bold text-white mb-4">Let's Create Together</h2>
